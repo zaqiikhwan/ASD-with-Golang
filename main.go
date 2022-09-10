@@ -39,11 +39,11 @@ func (L *SinglyLinkedList) AddFirst(key interface{}) {
 }
 
 func (L *SinglyLinkedList) RemoveFirst() {
-	if L.length() >= 1 {
+	if L.IsEmpty() {
+		fmt.Println("SinglyLinkedList Kosong")
+	} else {
 		L.head = L.head.next
 		L.size--
-	} else {
-		fmt.Println("Linked SinglyLinkedList Kosong")
 	}
 }
 
@@ -67,7 +67,9 @@ func (L *SinglyLinkedList) RemoveLast() {
 			L.head = L.head.next
 		}
 	}
-	L.head.next = nil
+	if L.length() > 1 {
+		L.head.next = nil
+	}
 	L.tail = L.head
 	L.size--
 }
